@@ -1,0 +1,38 @@
+<div class="container card my-5 p-4">
+  <div class="d-block">
+    <div class="d-flex justify-content-center align-items-center">
+      <h1><strong>Demo Application</strong></h1>
+    </div>
+    <form>
+      <div class="d-flex justify-content-center align-items-center">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Enter your String here..</mat-label>
+          <input
+            matInput
+            type="text"
+            name="getSearchString"
+            [(ngModel)]="getSearchString"
+          />
+        </mat-form-field>
+      </div>
+      <div class="d-flex justify-content-center align-items-center">
+        <button
+          class="btn btn-primary"
+          mat-button
+          type="submit"
+          [disabled]="!getSearchString"
+          (click)="searchString(getSearchString)"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+
+    <div *ngIf="getItemData" class="pt-4">
+      <app-result
+        [searchResult]="getItemData"
+        [dataLength]="searchResult.total_count"
+      ></app-result>
+    </div>
+  </div>
+</div>
