@@ -17,6 +17,7 @@ export class SearchComponent implements OnInit {
   getSearchString: string;
   searchResult;
   getItemData: [];
+  isDataReady: boolean = false;
 
   constructor(
     private searchService: SearchService,
@@ -27,9 +28,11 @@ export class SearchComponent implements OnInit {
   }
 
   searchString = (getVal) => {
+    this.isDataReady = false;
     this.searchService.getSearchResult(getVal)
     .subscribe( res => {
       if (res) {
+        this.isDataReady = true;
         this.openSnackBar("Request Successfull", "Success");
         this.searchResult = res;
         this.getItemData = this.searchResult.items;

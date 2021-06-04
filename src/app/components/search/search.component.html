@@ -28,7 +28,7 @@
       </div>
     </form>
 
-    <div *ngIf="getItemData" class="pt-4">
+    <div *ngIf="isDataReady" class="pt-4">
       <app-result
         [searchResult]="getItemData"
         [dataLength]="searchResult.total_count"
